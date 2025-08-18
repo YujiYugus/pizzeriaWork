@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import cesta from '../assets/icons/cesta.png'
-import home from '../assets/icons/home.png'
-import contato from '../assets/icons/contato.png'
+import cesta from '../../assets/icons/cesta.png'
+import home from '../../assets/icons/home.png'
+import contato from '../../assets/icons/contato.png'
 
 type footerProps = {
   destaque?: boolean;
