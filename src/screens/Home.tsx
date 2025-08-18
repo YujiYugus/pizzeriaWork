@@ -11,9 +11,6 @@ export default function Home() {
       {/* Conteúdo que pode rolar */}
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Header />
-
-        {/* Título Favoritos */}
-        <Text style={styles.titulo}>FAVORITOS</Text>
         <Categorias />
 
         {/* Título Sabores Favoritos */}

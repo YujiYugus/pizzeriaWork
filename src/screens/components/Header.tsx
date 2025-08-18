@@ -1,33 +1,36 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import lupa from '../../assets/icons/lupa.png'
+import { View, Text, StyleSheet, Image } from 'react-native';
+import logo from '../../assets/logo.png';
+import SearchBar from '../../hooks/useSearch';
+import { loadTop } from '../../services/loadData';
 
-export default function Header() {
-  return (
-    <View style={styles.header}>
+class Top extends React.Component {
+  state = {
+    top: {
+      title: '',
+      find: '',
+    },
+    list: [],
+  }
+  updateTop() {
+    const back = loadTop();
+    this.setState({ top: back })
+  }
+  componentDidMount() {
+    this.updateTop();
+  }
+  render() {
+    return <View style={styles.header}>
       <View style={styles.topRow}>
-        <TouchableOpacity>
-          <Ionicons name="menu" size={28} color="#fff" />
-        </TouchableOpacity>
+        <Text style={styles.title}>{this.state.top.title}</Text>
         <Image
-          source={require('../../assets/logo.png')}
+          source={logo}
           style={styles.profileImage}
         />
       </View>
-
-      <Text style={styles.title}>FAÇA SEU{'\n'}PEDIDOS</Text>
-
-      <View style={styles.searchContainer}>
-        <Image source={lupa} style={styles.lupa} />
-        <TextInput
-          placeholder="Pesquise por um sabor"
-          placeholderTextColor="#666"
-          style={styles.searchInput}
-        />
-      </View>
+      <SearchBar placeholder={this.state.top.find} />
     </View>
-  );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -57,22 +60,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 20,
+    maxWidth: 120,
+    flexWrap: "wrap",
   },
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FCD9A3',
-    borderRadius: 20,
-    paddingHorizontal: 15,
-    height: 40,
-  },
-  searchInput: {
-    flex: 1,
-    marginLeft: 10,
-    color: '#000',
-  },
-  lupa: {
-    width: 20,
-    height: 20,
-  }
 });
+
+export default Top;

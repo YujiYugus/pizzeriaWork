@@ -3,7 +3,7 @@ import big from '../assets/icons/pizzaBig.png';
 import bebidas from '../assets/icons/bebidas.png';
 
 const categorias = {
-    title: "Categorias",
+    title: "CATEGORIAS",
     list: [
         {
             cat: "Gigante",
