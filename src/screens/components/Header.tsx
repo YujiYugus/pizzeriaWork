@@ -16,7 +16,7 @@ export default function Header() {
         />
       </View>
 
-      <Text style={styles.title}>FAÇA SEU{'\n'}PEDIDO</Text>
+      <Text style={styles.title}>FAÇA SEU{'\n'}PEDIDOS</Text>
 
       <View style={styles.searchContainer}>
         <Image source={lupa} style={styles.lupa} />
