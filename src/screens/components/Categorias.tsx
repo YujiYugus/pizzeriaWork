@@ -8,6 +8,7 @@ interface CategoriaProps {
 }
 
 
+
 const TopOfList = ({ Top, title }: { Top?: React.ComponentType; title: string }) => (
   <View>
     {Top && <Top />}
@@ -18,6 +19,10 @@ const TopOfList = ({ Top, title }: { Top?: React.ComponentType; title: string })
 export default function Categorias({ top: Top }: CategoriaProps) {
   const [title, list] = useCategorias();
   const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>("");
+
+  const handlePress = (catName: string) => {
+    setCategoriaSelecionada(prev => prev === catName ? "" : catName)
+  };
 
   const topOfList = useMemo(() => <TopOfList Top={Top} title={title} />, [Top, title]);
 
@@ -30,7 +35,7 @@ export default function Categorias({ top: Top }: CategoriaProps) {
             key={cat.cat}
             {...cat}
             selecionada={cat.cat === categoriaSelecionada}
-            aoPressionar={() => setCategoriaSelecionada(cat.cat)}
+            aoPressionar={() => handlePress(cat.cat)}
           />
         ))}
       </ScrollView>
