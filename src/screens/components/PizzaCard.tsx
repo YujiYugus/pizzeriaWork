@@ -1,22 +1,32 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, GestureResponderEvent, TouchableOpacity } from 'react-native';
+import Stars from '../../components/Stars';
+
 type Props = {
-  nome: string;
-  preco: string;
-  imagem: any;
+  name: string;
+  price: string;
+  image: any;
+  stars: number;
   destaque?: boolean;
+  onPress?: (e: GestureResponderEvent) => void;
 };
 
-export default function PizzaCard({ nome, preco, imagem, destaque = false }: Props) {
+export default function PizzaCard({ name, price, image, stars, destaque = false, onPress }: Props) {
   const textoCor = destaque ? '#fff' : '#000';
 
   return (
-    <View style={[styles.card, destaque && styles.cardDestaque]}>
-      <Image source={imagem} style={styles.imagem} />
-      <Text style={[styles.nome, { color: textoCor }]}>{nome}</Text>
-      <Text style={[styles.estrelas, { color: textoCor }]}>☆☆☆☆☆</Text>
-      <Text style={[styles.preco, { color: textoCor }]}>{preco}</Text>
-    </View>
+    <TouchableOpacity
+      style={[styles.card, destaque && styles.cardDestaque]}
+      onPress={onPress}
+      activeOpacity={0.8}
+    >
+      <View style={[styles.card, destaque && styles.cardDestaque]}>
+        <Image source={image} style={styles.imagem} />
+        <Text style={[styles.nome, { color: textoCor }]}>{name}</Text>
+        <Stars quantity={stars} /> 
+        <Text style={[styles.preco, { color: textoCor }]}>{price}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
