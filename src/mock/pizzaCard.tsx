@@ -1,6 +1,6 @@
-import pep from '../assets/produtores/peperoni.png';
-import mag from '../assets/produtores/marguerita.png';
-import che from '../assets/produtores/cheese.png';
+import pep from '../assets/produtos/peperoni.png';
+import mag from '../assets/produtos/marguerita.png';
+import che from '../assets/produtos/cheese.png';
 
 const randomResult = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
